@@ -12,14 +12,14 @@ var isPartyTime = false;
 
 var napTimeSelector = document.getElementById("napTimeSelector");
 var lunchTimeSelector = document.getElementById("lunchTimeSelector");
-var wakeUpTimeSelector = document.getElementById("wakeUpTimeSelector");
+var wakeupTimeSelector = document.getElementById("wakeupTimeSelector");
 
 
 // write + run functions
 
 var updateClock = function() {
 
-     var lolcat = document.getElementById('lolcat');
+     var lolcat = document.getElementById('lolcat');    // local variables
      var message =
 		 document.getElementById('timeEvent');
      var messageText;
@@ -109,7 +109,7 @@ var partyEvent = function() {
 };
 
 var wakeupEvent = function() {
-	wakeUpTime = wakeUpTimeSelector.value;
+	wakeupTime = wakeupTimeSelector.value;
 };
 
 var lunchEvent = function() {
@@ -121,6 +121,6 @@ var napEvent = function() {
 };
 
 partyTimeButton.addEventListener('click', partyEvent);
-wakeupTimeSelector.addEventListener('change', wakeUpEvent);
+wakeupTimeSelector.addEventListener('change', wakeupEvent);
 lunchTimeSelector.addEventListener('change', lunchEvent);
 napTimeSelector.addEventListener('change', napEvent);
