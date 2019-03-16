@@ -1,3 +1,5 @@
+// list + define variables global(?)
+
 var noon = 12;
 var evening = 18; // 6PM
 var wakeupTime = 9; // 9AM
@@ -8,15 +10,22 @@ var time = new Date().getHours();
 var partyTimeButton = document.getElementById("partyTimeButton");
 var isPartyTime = false;
 
-var updateClock = function(){
+var napTimeSelector = document.getElementById("napTimeSelector");
+var lunchTimeSelector = document.getElementById("lunchTimeSelector");
+var wakeUpTimeSelector = document.getElementById("wakeUpTimeSelector");
+
+
+// write + run functions
+
+var updateClock = function() {
 
      var lolcat = document.getElementById('lolcat');
      var message =
 		 document.getElementById('timeEvent');
      var messageText;
-	var image = "https://s3.amazonaws.com/media.skillcrush.com/skillcrush/wp-content/uploads/2016/08/normalTime.jpg";
+	   var image = "https://s3.amazonaws.com/media.skillcrush.com/skillcrush/wp-content/uploads/2016/08/normalTime.jpg";
 
-     if (time == partyTime){
+     if (time == partyTime) {
           image = "https://s3.amazonaws.com/media.skillcrush.com/skillcrush/wp-content/uploads/2016/08/partyTime.jpg";
           messageText = "IZ PARTEE TIME!!";
      } else if (time == napTime) {
@@ -27,13 +36,13 @@ var updateClock = function(){
           messageText = "IZ NOM NOM NOM TIME!!";
      } else if (time == wakeupTime) {
           image = "https://s3.amazonaws.com/media.skillcrush.com/skillcrush/wp-content/uploads/2016/08/wakeUpTime.jpg";
-		 messageText = "IZ TIME TO GETTUP.";
+		      messageText = "IZ TIME TO GETTUP.";
      } else if (time < noon) {
-          messageText = "Good morning!";
+          messageText = "Good Morning!";
      } else if (time > evening) {
           messageText = "Good Evening!";
      } else {
-          messageText = "Good afternoon!";
+          messageText = "Good Afternoon!";
      }
 
 	message.innerText = messageText;
@@ -54,21 +63,21 @@ var showCurrentTime = function() {
      var meridian = "AM";
 
 	// Set Hours
-     if (hours >= noon){
+     if (hours >= noon) {
           meridian = "PM";
      }
 
-     if (hours > noon){
+     if (hours > noon) {
           hours = hours - 12;
      }
 
 	// Set Minutes
-     if (minutes < 10){
+     if (minutes < 10) {
           minutes = "0" + minutes;
      }
 
      // Set Seconds
-     if (seconds < 10){
+     if (seconds < 10) {
           seconds = "0" + seconds;
      }
 
@@ -82,7 +91,7 @@ updateClock();
 
 var oneSecond = 1000;
 
-setInterval( updateClock, oneSecond);
+setInterval(updateClock, oneSecond);
 
 var partyEvent = function() {
 
@@ -99,4 +108,19 @@ var partyEvent = function() {
    }
 };
 
+var wakeupEvent = function() {
+	wakeUpTime = wakeUpTimeSelector.value;
+};
+
+var lunchEvent = function() {
+	lunchTime = lunchTimeSelector.value;
+};
+
+var napEvent = function() {
+	napTime = napTimeSelector.value;
+};
+
 partyTimeButton.addEventListener('click', partyEvent);
+wakeupTimeSelector.addEventListener('change', wakeUpEvent);
+lunchTimeSelector.addEventListener('change', lunchEvent);
+napTimeSelector.addEventListener('change', napEvent);
